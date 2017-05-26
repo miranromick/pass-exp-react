@@ -8,29 +8,23 @@ class UserService{
     }
   }
   submitRegistration(attributes){
-    attributes['authToken'] = '111-222-333'
-    setTimeout(()=>{
-      updateUser(attributes)
-    },1000)
-  }
-
-  submitLogin(attributes){
     const params = {
-      method: "POST",
+      method: 'POST',
       headers: this.headers,
       body: JSON.stringify(attributes)
     }
-    fetch(`${this.baseUrl}/login`, params).then((response)=>{
+    fetch (`${this.baseUrl}/users`, params).then((response)=>{
       if(response.ok){
         response.json().then((body)=>{
           updateUser(body.user)
         })
       }else{
-        loginFail()
+        response.json().then((body)=>{
+          registrationFail(body.errors)
+        })
       }
     })
   }
-}
-
+}  
 const service = new UserService()
 export default service

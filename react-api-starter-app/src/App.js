@@ -6,6 +6,7 @@ import UserDetail from './routes/UserDetail'
 import UserRegistration from './routes/UserRegistration'
 import Login from './routes/Login'
 import UserStore from './stores/UserStore'
+import {logout} from './actions/UserActions'
 
 
 class App extends Component {
@@ -26,14 +27,16 @@ componentWillUnmount(){
 updateLoginStatus(){
   this.setState({isLoggedIn: UserStore.isLoggedIn()})
 }
+  handleLogout(){
+    logout()
+  }
   render() {
     return (
       <Router>
         <div>
           <Header
             isLoggedIn={this.state.isLoggedIn}
-            handleLogout={this.handleLogout}
-          />
+            handleLogout={this.handleLogout}/>
           <div className='container'>
             <div className='row'>
               <div className='col-xs-6 col-xs-offset-3'>

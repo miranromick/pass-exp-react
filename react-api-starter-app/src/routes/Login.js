@@ -42,7 +42,7 @@ class Login extends Component {
   }
 
   isValid(){
-    return Object.keys(this.state.errors).length === 0 
+    return Object.keys(this.state.errors).length === 0
   }
 
   render() {
@@ -51,7 +51,7 @@ class Login extends Component {
         <div className='col-xs-12'>
           <div className='panel panel-default'>
             <div className='panel-body'>
-              { !this.isValid() && 
+              { !this.isValid() &&
                 <div className='alert alert-danger'>
                   Please verify that all fields are filled in below.
                 </div>
@@ -92,7 +92,7 @@ class Login extends Component {
                 </div>
               </form>
               <div>
-                Don't have an account yet? <Link to='/register'>Create One</Link>
+                Dont have an account yet? <Link to='/register'>Create One</Link>
               </div>
             </div>
           </div>

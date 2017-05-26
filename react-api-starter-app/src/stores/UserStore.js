@@ -6,7 +6,7 @@ class UserStore extends EventEmitter{
     super()
     this.fields = {}
   }
-  
+
   isLoggedIn(){
   return this.fields.authToken != null
   }
@@ -20,12 +20,22 @@ class UserStore extends EventEmitter{
     this.emit('change')
   }
 
+  clearAuthToken(){
+    this.fields.authToken = null
+    this.emit('change')
+  }
+
   handleActions(action){
     switch(action.type){
       case("UPDATE_USER"):{
         this.updateUser(action.attributes)
         break
       }
+      case("LOGOUT"):{
+       this.clearAuthToken()
+       break
+     }
+
       default:{}
     }
   }

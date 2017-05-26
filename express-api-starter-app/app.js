@@ -36,10 +36,10 @@ app.get('/', function (request, response) {
   response.json({message: 'API Example App'})
 });
 
-app.get('/user', 
+app.get('/user',
 authorization,
 function(request, response){
-  response.json({user: request.currentUser}) 
+  response.json({user: request.currentUser})
 })
 
 app.post('/users', function(request, response){
